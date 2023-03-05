@@ -1,0 +1,24 @@
+extends layout
+
+block content
+
+  h3= title
+
+  <a href="/sniptest/">test snippet link</a>
+  hr
+
+  ul
+  each document in documents
+    li
+      button(class="btn" onclick=`getSnippets('${document.title}','${document.codeSnippet}')`)= document.title
+
+  h3 Post new snippet
+  
+  form(action="/post_snippet" method="POST")
+    label(for="code") snippet
+    input(type="text" name="code" id="code" required)
+    label(for="title") title
+    input(type="text" name="title" id="title" required)
+    button(class="btn" type="submit") Post
+  
+      
